@@ -20,7 +20,30 @@ Don’t put multiple assignments on a single line either.
 
 2) **Breaking long lines and strings**
 
-We try to limit lines to 120 characters before breaking the text to the second line. We make exceptiosn for legacy translated texts and block of text that makes sense to be presented on one line (e.g., a bash command that we cannot split on two lines without reducing readability) 
+Try to limit lines to 100 characters at most. Lines that need to exceed 100 characters must not exceed 120 characters.
+We make exceptions for legacy translated texts and block of text that makes sense to be presented on one line (e.g., a bash command that we cannot split on two lines without reducing readability).
+
+2.1) **Breaking conditional statements into multiple lines**
+For veryshort statements in conditionals, it is acceptable to have a compact format where the statement is on the same line as the conditional:
+```
+if (conditional) do_this();
+
+if (condition1) do_this();
+else if (condition2) do_this();
+else if (condition3) do_this();
+else do_something_else();
+```
+Lines of this nature are not to exceed 100 characters.
+If any conditional check has braces, the following conditionals within the if...else if...else structure must also have braces, regardless of line length:
+```
+if (condition1) do_this();
+else if (condition2) do_this();
+else if (condition3) {
+    do_something_else_that_has_a_very_long_name();
+} else {
+    do_something_else();
+}
+```
 
 3) **Placing braces and spaces**
 
@@ -28,30 +51,6 @@ Put the opening brace last on the line, and put the closing brace first:
 ```
 if (condition) {
     action();
-}
-```
-
-Do not unnecessarily use braces where a single statement will do.
-```
-if (condition)
-    action();
-```
-and
-```
-if (condition)
-    do_this();
-else
-    do_that();
-```
-
-This does not apply if only one branch of a conditional statement is a single statement; in the latter case use braces in both branches:
-
-```
-if (condition) {
-    do_this();
-    do_that();
-} else {
-    otherwise();
 }
 ```
 
@@ -84,6 +83,3 @@ No space before the prefix or postfix increment & decrement unary operators:
 
     ++  --
 and no space around the . and -> structure member operators.
-
-
-
