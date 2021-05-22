@@ -1,5 +1,4 @@
 # Style Guide for MX Linux Applications
-
 The main purpose of using a specific style is to standardize the code to increase readability and avoid confusions.
 
 Main principle: we should always choose clarity over saving keystrokes.
@@ -11,7 +10,6 @@ Where there is doubt about any style in this guide, please refer to the Linux Ke
 Where there are conflicts between the MX Linux style guide and the Linux kernel style guide, the MX Linux style guide always takes precedence over the Linux kernel style guide.
 
 ### 1. Indentation
-
 We use 4 blank spaces for each level of indentation.
 
 Don’t put multiple statements on a single line unless you have something to hide:
@@ -22,7 +20,6 @@ if (condition) do_this;
 Don’t put multiple assignments on a single line either. 
 
 ### 2. Breaking long lines and strings
-
 Try to limit lines to 100 characters at most. Lines that need to exceed 100 characters must not exceed 120 characters.
 We make exceptions for legacy translated texts and block of text that makes sense to be presented on one line (e.g., a bash command that we cannot split on two lines without reducing readability).
 
@@ -30,7 +27,6 @@ All whitespace (such as indentation) and comment text is considered as part of t
 For the purposes of this calculation, a single tab character is considered to occupy 4 characters of a line.
 
 #### 2.1. Breaking conditional statements into multiple lines
-
 For very short statements in conditionals, it is acceptable to have a compact format where the statement is on the same line as the conditional:
 ```
 if (conditional) do_this();
@@ -53,7 +49,6 @@ else if (condition3) {
 ```
 
 #### 2.2. Breaking loops into multiple lines
-
 A *for* or *while* loop may have a compact format, providing the line does not exceed 70 characters:
 ```
 for (int ixi=0; ixi<100; ++ixi) do_something(ixi);
@@ -68,7 +63,6 @@ do {
 ```
 
 ### 3. Placing braces and spaces
-
 Put the opening brace last on the line, and put the closing brace first:
 ```
 if (condition) {
@@ -77,7 +71,6 @@ if (condition) {
 ```
 
 #### 3.1. Spaces
-
 Use a space after (most) keywords. The notable exceptions are sizeof, typeof, alignof, and \_\_attribute\_\_.
 
 So use a space after these keywords:
@@ -108,6 +101,7 @@ No space before the prefix or postfix increment & decrement unary operators:
 and no space around the . and -> structure member operators.
 
 ### 4. Variable Declarations
+Any variable, function, or object, must be used at least once within its applicable scope.
 
 #### 4.1. Maintaining minimal scope
 Where possible, declare variables as late as possible, with the minimal amount of scope. This makes it clearer where they are used, such that removal becomes easier.
@@ -140,7 +134,6 @@ for (; ixLoop<123; ++ixLoop) {
 ```
 
 #### 4.2. Initialization
-
 Prefer initialization to late initial assignment where possible:
 ```
 int foo = do_something(1);
@@ -180,7 +173,6 @@ else foo = 11; // Outside the 10-line limit.
 
 
 #### 4.3. Use of the "const" keyword
-
 Always declare a variable as "const" if it is never modified beyond its initial assignment.
 
 ```
@@ -196,14 +188,12 @@ const char *const str = "hello"; // Both content and pointer variable are consta
 ```
 
 ### 5. Naming convention for variables and objects
-
 Much of the naming convention is similar to the Linux kernel guide, with some exceptions.
 
 Some discretion may be used when naming variables, this is a guide to naming variables.
 However, objects such as Qt GUI elements, must follow a specified pattern.
 
 #### 5.1. Function names
-
 Function names must be descriptive, and "camel-case" notation is to be used.
 ```
 void function()
@@ -218,7 +208,6 @@ void functionSomething()
 Parameter names should be short, and to the point.
 
 #### 5.2. General-purpose variables
-
 Short names such as "tmp" are preferred, which is much easier to write, and not the least more difficult to understand.
 
 Mixed-case names are not frowned upon like the kernel guide, however splitting a piece of code into multiple functions should be considered if a variable name needs to be overly descriptive.
@@ -230,7 +219,6 @@ Similarly, tmp can be just about any type of variable that is used to hold a tem
 If your variables need to be more descriptive, consider splitting the code into multiple functions.
 
 #### 5.3. C++ Classes
-
 Custom class types must start follow a similar convention to camel-case, however the fist letter must be upper-case.
 ```
 class TestClass
@@ -244,7 +232,6 @@ public:
 ```
 
 #### 5.4. Qt GUI Elements defined in UI Files
-
 Qt objects as defined by UI files (eg. created by Qt Designer or Qt Creator) must have a prefix denoting the type of object, followed a descriptive name of what the object does.
 The prefixes are as follows:
 
