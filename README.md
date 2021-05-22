@@ -1,4 +1,4 @@
-# Style Guide for MX apps 
+# Style Guide for MX Linux Applications
 
 The main purpose of using a specific style is to standardize the code to increase readability and avoid confusions.
 
@@ -243,7 +243,7 @@ public:
 }
 ```
 
-5.3) **Qt GUI Elements defined in UI Files**
+5.4) **Qt GUI Elements defined in UI Files**
 
 Qt objects as defined by UI files (eg. created by Qt Designer or Qt Creator) must have a prefix denoting the type of object, followed a descriptive name of what the object does.
 The prefixes are as follows:
