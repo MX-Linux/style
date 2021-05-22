@@ -4,7 +4,7 @@ The main purpose of using a specific style is to standardize the code to increas
 Main principle: we should always choose clarity over saving keystrokes.
 
 ## Qt/C++ Applications
-We are mostly following https://www.kernel.org/doc/html/v4.10/process/coding-style.html with a handful of exceptions.
+We are mostly following the [Linux kernel coding style](https://www.kernel.org/doc/html/v4.10/process/coding-style.html) with a handful of exceptions.
 Where there is doubt about any style in this guide, please refer to the Linux Kernel style guide above.
 
 Where there are conflicts between the MX Linux style guide and the Linux kernel style guide, the MX Linux style guide always takes precedence over the Linux kernel style guide.
