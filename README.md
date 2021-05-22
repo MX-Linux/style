@@ -120,7 +120,7 @@ bar = doo_another_thing(foo);
 
 Counting loops should have the variable declaration and initialization in the loop body wherever feasible:
 ```
-for (int ixi=0; ixi<123; ++ixi) {
+for (int ixi = 0; ixi < 123; ++ixi) {
     do_something_repetitively(ixi);
 }
 ```
@@ -128,7 +128,7 @@ for (int ixi=0; ixi<123; ++ixi) {
 Keeping in mind the 120-character hard limit (see section 2), a loop counter may be declared before the loop body if the initialization will not fit:
 ```
 int ixLoop = super_duper_long_variable_initialization_function(1) * where_the_loop_starts(1);
-for (; ixLoop<123; ++ixLoop) {
+for (; ixLoop < 123; ++ixLoop) {
     do_something_repetitively(ixLoop);
 }
 ```
@@ -151,7 +151,7 @@ test_call(5);
 test_call(6);
 another_test(7);
 // Blank lines and comments are counted within the 10-line range.
-if(test(9)) foo = 9;
+if (test(9)) foo = 9;
 else foo = 10;
 ```
 
@@ -167,7 +167,7 @@ test_call(6);
 another_test(7);
 yet_another_test(8);
 
-if(test(10)) foo = 10;
+if (test(10)) foo = 10;
 else foo = 11; // Outside the 10-line limit.
 ```
 
