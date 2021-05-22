@@ -26,9 +26,12 @@ Don’t put multiple assignments on a single line either.
 Try to limit lines to 100 characters at most. Lines that need to exceed 100 characters must not exceed 120 characters.
 We make exceptions for legacy translated texts and block of text that makes sense to be presented on one line (e.g., a bash command that we cannot split on two lines without reducing readability).
 
+All whitespace (such as indentation) and comment text is considered as part of the line, and counts towards the line length.
+For the purposes of this calculation, a single tab character is considered to occupy 4 characters of a line.
+
 2.1) **Breaking conditional statements into multiple lines**
 
-For veryshort statements in conditionals, it is acceptable to have a compact format where the statement is on the same line as the conditional:
+For very short statements in conditionals, it is acceptable to have a compact format where the statement is on the same line as the conditional:
 ```
 if (conditional) do_this();
 
@@ -47,6 +50,21 @@ else if (condition3) {
 } else {
     do_something_else();
 }
+```
+
+2.1) **Breaking loops into multiple lines**
+
+A *for* or *while* loop may have a compact format, providing the line does not exceed 70 characters:
+```
+for (int ixi=0; ixi<100; ++ixi) do_something(ixi);
+while (test==true) test = do_stuff();
+```
+
+A *do ... while* loop is not to have a form such as above, regardless of line length:
+```
+do {
+    something(condition);
+} while (condition);
 ```
 
 3) **Placing braces and spaces**
@@ -69,6 +87,7 @@ So use a space after these keywords:
 but not with sizeof, typeof, alignof, or \_\_attribute\_\_. E.g.,
 
     s = sizeof(struct file);
+
 Do not add spaces around (inside) parenthesized expressions.
 
 When declaring pointer data or a function that returns a pointer type, the preferred use of * is adjacent to the data name or function name and not adjacent to the type name. Examples:
@@ -103,6 +122,21 @@ However, consider aesthetics and readability. If many variables are being used, 
 int foo, bar;
 foo = do_something(1);
 bar = doo_another_thing(foo);
+```
+
+Counting loops should have the variable declaration and initialization in the loop body wherever feasible:
+```
+for (int ixi=0; ixi<123; ++ixi) {
+    do_something_repetitively(ixi);
+}
+```
+
+Keeping in mind the 120-character hard limit (see section 2), a loop counter may be declared before the loop body if the initialization will not fit:
+```
+int ixLoop = super_duper_long_variable_initialization_function(1) * where_the_loop_starts(1);
+for (; ixLoop<123; ++ixLoop) {
+    do_something_repetitively(ixLoop);
+}
 ```
 
 4.2) **Initialization**
@@ -160,3 +194,75 @@ const char *str = "hello"; // Constant content, but "str" can be assigned to som
 char *const str = "hello"; // Content can be modified, pointer variable cannot be re-assigned.
 const char *const str = "hello"; // Both content and pointer variable are constant.
 ```
+
+5) **Naming convention for variables and objects**
+
+Much of the naming convention is similar to the Linux kernel guide, with some exceptions.
+
+Some discretion may be used when naming variables, this is a guide to naming variables.
+However, objects such as Qt GUI elements, must follow a specified pattern.
+
+5.1) **Function names**
+
+Function names must be descriptive, and "camel-case" notation is to be used.
+```
+void function()
+{
+    test();
+}
+void functionSomething()
+{
+    testAnotherThing();
+}
+```
+Parameter names should be short, and to the point.
+
+5.2) **General-purpose variables**
+
+Short names such as "tmp" are preferred, which is much easier to write, and not the least more difficult to understand.
+
+Mixed-case names are not frowned upon like the kernel guide, however splitting a piece of code into multiple functions should be considered if a variable name needs to be overly descriptive.
+
+Local variable names should be short, and to the point.
+A loop counter may be called i. Calling it loop_counter is non-productive, if there is no chance of it being mis-understood.
+Similarly, tmp can be just about any type of variable that is used to hold a temporary value.
+
+If your variables need to be more descriptive, consider splitting the code into multiple functions.
+
+5.3) **C++ Classes**
+
+Custom class types must start follow a similar convention to camel-case, however the fist letter must be upper-case.
+```
+class TestClass
+{
+    int variable;
+    int classVar;
+public:
+    TestClass();
+    ~TestClass();
+}
+```
+
+5.3) **Qt GUI Elements defined in UI Files**
+
+Qt objects as defined by UI files (eg. created by Qt Designer or Qt Creator) must have a prefix denoting the type of object, followed a descriptive name of what the object does.
+The prefixes are as follows:
+
+|Element(s)                 |Prefix |
+|---------------------------|-------|
+|Labels                     |label  |
+|Group Boxes, Frames        |box    |
+|Tabs (within a QTabWidget) |tab    |
+|Text fields                |text   |
+|Spin boxes                 |spin   |
+|Combo boxes                |combo  |
+|Buttons (push/command/tool)|button |
+|Radio buttons              |radio  |
+|Check boxes                |check  |
+|QDialogButtonBox           |btnbox |
+|QListView, QListWidget     |list   |
+|QTreeView, QTreeWidget     |tree   |
+
+For Qt elements not in the above list, use some common sense with names.
+
+This does not apply to local variables (section 5.2) used as temporary Qt objects.
