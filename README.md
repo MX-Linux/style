@@ -37,6 +37,8 @@ else if (condition3) do_this();
 else do_something_else();
 ```
 Lines of this nature are not to exceed 70 characters.
+If the line contains a trailing comment, the code before the comment cannot exceed 70 characters. The whole line cannot exceed 100 characters.
+
 If any conditional check has braces, the following conditionals within the if...else if...else structure must also have braces, regardless of line length:
 ```
 if (condition1) do_this();
@@ -54,8 +56,9 @@ A *for* or *while* loop may have a compact format, providing the line does not e
 for (int ixi=0; ixi<100; ++ixi) do_something(ixi);
 while (test==true) test = do_stuff();
 ```
+If the line contains a trailing comment, the code before the comment cannot exceed 70 characters. The whole line cannot exceed 100 characters.
 
-A *do ... while* loop is not to have a form such as above, regardless of line length:
+A *do ... while* loop is not to have a compact form such as above, regardless of line length:
 ```
 do {
     something(condition);
