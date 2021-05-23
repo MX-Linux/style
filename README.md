@@ -53,7 +53,7 @@ else if (condition3) {
 #### 2.2. Breaking loops into multiple lines
 A *for* or *while* loop may have a compact format, providing the line does not exceed 70 characters:
 ```
-for (int ixi=0; ixi<100; ++ixi) do_something(ixi);
+for (int ixi = 0; ixi < 100; ++ixi) do_something(ixi);
 while (test==true) test = do_stuff();
 ```
 If the line contains a trailing comment, the code before the comment cannot exceed 70 characters. The whole line cannot exceed 100 characters.
