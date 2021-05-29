@@ -240,18 +240,18 @@ The prefixes are as follows:
 
 |Element(s)                         |Prefix|Example
 |-----------------------------------|------|-------
-|Labels                             |lbl|lblUser
-|Group Boxes, Frames                |box|boxSettings
-|QTabWidget (and the tabs within)   |tab|tabServer
-|Text fields                        |txt|txtUser
-|Spin boxes                         |spn|spnPartSize
-|Combo boxes                        |cmb|cmbType
-|Buttons (push/command/tool)        |btn|btnOK
-|Radio buttons                      |rad|radProfileNew
-|Check boxes                        |chk|chkUserActive
-|Lists (QListView/QListWidget)      |lst|lstObjects
-|Tree Lists (QTreeView/QTreeWidget) |trl|trlHierarchy
-|Tables (QTableView/Widget)         |tbl|tblFileData
+|Labels                             |label |labelUser
+|Group Boxes, Frames                |box   |boxSettings
+|Tabs (within a QTabWidget)         |tab   |tabServer
+|Text fields                        |text  |textUser
+|Spin boxes                         |spin  |spinPartSize
+|Combo boxes                        |combo |comboType
+|Buttons (push/command/tool)        |button|buttonOK
+|Radio buttons                      |radio |radioProfileNew
+|Check boxes                        |check |checkUserActive
+|Lists (QListView/QListWidget)      |list  |listObjects
+|Trees (QTreeView/QTreeWidget)      |tree  |treeHierarchy
+|Tables (QTableView/QTableWidget)   |table |tableFileData
 
 For Qt elements not in the above list, prefixes are not necessary, but use some common sense with names.
 
