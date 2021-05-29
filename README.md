@@ -242,6 +242,7 @@ The prefixes are as follows:
 |-----------------------------------|------|-------
 |Labels                             |label |labelUser
 |Group Boxes, Frames                |box   |boxSettings
+|Container of tabs (QTabWidget)     |tabs  |tabsSettings
 |Tabs (within a QTabWidget)         |tab   |tabServer
 |Text fields                        |text  |textUser
 |Spin boxes                         |spin  |spinPartSize
