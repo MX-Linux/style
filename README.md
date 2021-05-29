@@ -235,24 +235,24 @@ public:
 ```
 
 #### 5.4. Qt GUI Elements defined in UI Files
-Qt objects as defined by UI files (eg. created by Qt Designer or Qt Creator) must have a prefix denoting the type of object, followed a descriptive name of what the object does.
+Qt objects as defined by UI files (eg. created by Qt Designer or Qt Creator) must be in camel-case and start with a prefix denoting the type of object, followed a descriptive name of what the object does.
 The prefixes are as follows:
 
-|Element(s)                 |Prefix |
-|---------------------------|-------|
-|Labels                     |label  |
-|Group Boxes, Frames        |box    |
-|Tabs (within a QTabWidget) |tab    |
-|Text fields                |text   |
-|Spin boxes                 |spin   |
-|Combo boxes                |combo  |
-|Buttons (push/command/tool)|button |
-|Radio buttons              |radio  |
-|Check boxes                |check  |
-|QDialogButtonBox           |btnbox |
-|QListView, QListWidget     |list   |
-|QTreeView, QTreeWidget     |tree   |
+|Element(s)                         |Prefix|Example
+|-----------------------------------|------|-------
+|Labels                             |lbl|lblUser
+|Group Boxes, Frames                |box|boxSettings
+|QTabWidget (and the tabs within)   |tab|tabServer
+|Text fields                        |txt|txtUser
+|Spin boxes                         |spn|spnPartSize
+|Combo boxes                        |cmb|cmbType
+|Buttons (push/command/tool)        |btn|btnOK
+|Radio buttons                      |rad|radProfileNew
+|Check boxes                        |chk|chkUserActive
+|Lists (QListView/QListWidget)      |lst|lstObjects
+|Tree Lists (QTreeView/QTreeWidget) |trl|trlHierarchy
+|Tables (QTableView/Widget)         |tbl|tblFileData
 
-For Qt elements not in the above list, use some common sense with names.
+For Qt elements not in the above list, prefixes are not necessary, but use some common sense with names.
 
 This does not apply to local variables (section 5.2) used as temporary Qt objects.
