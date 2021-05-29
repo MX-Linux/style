@@ -247,7 +247,7 @@ The prefixes are as follows:
 |Text fields                        |text  |textUser
 |Spin boxes                         |spin  |spinPartSize
 |Combo boxes                        |combo |comboType
-|Buttons (push/command/tool)        |button|buttonOK
+|Buttons (push/command/tool)        |push  |pushOK
 |Radio buttons                      |radio |radioProfileNew
 |Check boxes                        |check |checkUserActive
 |Lists (QListView/QListWidget)      |list  |listObjects
