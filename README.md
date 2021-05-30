@@ -253,6 +253,7 @@ The prefixes are as follows:
 |Lists (QListView/QListWidget)      |list  |listObjects
 |Trees (QTreeView/QTreeWidget)      |tree  |treeHierarchy
 |Tables (QTableView/QTableWidget)   |table |tableFileData
+|Progress bars and such indicators  |prog  |progSetup
 
 For Qt elements not in the above list, prefixes are not necessary, but use some common sense with names.
 
