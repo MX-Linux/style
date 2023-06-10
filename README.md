@@ -257,3 +257,21 @@ The prefixes are as follows:
 For Qt elements not in the above list, prefixes are not necessary, but use some common sense with names.
 
 This does not apply to local variables (section 5.2) used as temporary Qt objects.
+
+### 6. Slots and Signals
+Wherever practical, use the [newer Qt syntax for signals](https://wiki.qt.io/New_Signal_Slot_Syntax):
+```
+connect(sender, &Sender::valueChanged, receiver, &Receiver::updateValue);
+```
+If it is necessary to use the old method of connecting by name, a comment explaining the reason should be included.
+
+#### 6.1. Avoid the signal/slot facility of Qt Designer UI files
+Whilst it can be tempting to use this feature of Qt Designer, it is not recommended. Using this facility is error-prone, and breaks the separation between the form design and the code.
+It can make debugging code very difficult, as the behaviour of the GUI is not visible in the code.
+
+Instead, connect the slots to signals in code after setting up the UI.
+```
+connect(ui->pushClose, &QPushButton::clicked, this, &MainWindow::close);
+connect(ui->checkBoot, &QCheckBox::toggled, ui->frameBoot, &QFrame::setEnable);
+```
+Keeping slot connections in code separates the GUI design and presentation from the code.
