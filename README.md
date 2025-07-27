@@ -38,27 +38,33 @@ else do_something_else();
 ```
 Try to limit lines of this nature to 70 characters at most. Lines of this nature that need to exceed 70 characters are not to exceed 100 characters. These limits include any trailing comments.
 
-If any conditional check has braces, the following conditionals within the if...else if...else structure must also have braces, regardless of line length:
+If any conditional check has braces, all conditionals within the if...else if...else structure must also have braces, regardless of line length:
 ```
-if (condition1) do_this();
-else if (condition2) do_this();
-else if (condition3) {
+if (condition1) {
+    do_this();
+} else if (condition2) {
+    do_this();
+} else if (condition3) {
     do_something_else_that_has_a_very_long_name();
 } else {
     do_something_else();
 }
 ```
 
-#### 2.2. Breaking loops into multiple lines
-A *for* or *while* loop may have a compact format:
+#### 2.2. Loops
+A loop is not to have a compact form such as above, regardless of line length:
 ```
+// Non-compliant loops
 for (int ixi = 0; ixi < 100; ++ixi) do_something(ixi);
 while (test == true) test = do_stuff();
-```
-Try to limit lines of this nature to 70 characters at most. Lines of this nature that need to exceed 70 characters are not to exceed 100 characters. These limits include any trailing comments.
 
-A *do ... while* loop is not to have a compact form such as above, regardless of line length:
-```
+// Compliant loops
+for (int ixi = 0; ixi < 100; ++ixi) {
+    do_something(ixi);
+}
+while (test == true) {
+    test = do_stuff();
+}
 do {
     something(condition);
 } while (condition);
@@ -127,13 +133,6 @@ for (int ixi = 0; ixi < 123; ++ixi) {
 }
 ```
 
-Keeping in mind the 120-character hard limit (see section 2), a loop counter may be declared before the loop body if the initialization will not fit:
-```
-int ixLoop = super_duper_long_variable_initialization_function(1) * where_the_loop_starts(1);
-for (; ixLoop < 123; ++ixLoop) {
-    do_something_repetitively(ixLoop);
-}
-```
 
 #### 4.2. Initialization
 Prefer initialization to late initial assignment where possible:
@@ -151,10 +150,12 @@ do_something2(3);
 another_function(4);
 test_call(5);
 test_call(6);
-another_test(7);
 // Blank lines and comments are counted within the 10-line range.
-if (test(9)) foo = 9;
-else foo = 10;
+if (test(8)) {
+    foo = 9;
+} else {
+    foo = 11; // not allowed, over 10 lines beyond declaration.
+}
 ```
 
 If this cannot be achieved, a variable must be initialized to a suitable default value:
@@ -169,16 +170,19 @@ test_call(6);
 another_test(7);
 yet_another_test(8);
 
-if (test(10)) foo = 10;
-else foo = 11; // Outside the 10-line limit.
+if (test(10)) {
+    foo = 11; // Outside the 10-line limit, but already initialized.
+} else {
+    foo = 13;
+}
 ```
 
 
-#### 4.3. Use of the "const" keyword
-Always declare a variable as "const" if it is never modified beyond its initial assignment.
+#### 4.3. Use of the "const" and "constexpr" keywords.
+Always declare a variable as "const" if it is never modified beyond its initial assignment. Use "constexpr" if the variable is derived from an expression that can be definitively evaluated at compile time.
 
 ```
-const int foo = 5;
+constexpr int foo = 5;
 const int bar = foo * test;
 ```
 
