@@ -279,3 +279,14 @@ connect(ui->pushClose, &QPushButton::clicked, this, &MainWindow::close);
 connect(ui->checkBoot, &QCheckBox::toggled, ui->frameBoot, &QFrame::setEnable);
 ```
 Keeping slot connections in code separates the GUI design and presentation from the code.
+
+##### 6.1.1. Avoiding connect-by-name code
+
+It is recommended to tell the UI precompiler not to emit the `QMetaObject::connectSlotsByName()` call.
+
+If you use Qt Designer or Qt Creator to create the form files, open the Form Settings (usually Tools -> Form Editor -> Form Settings) ensure "Connect slots by name" is unselected. It adds `connectslotsbyname="false"` to the root XML tag:
+```
+<ui version="4.0"> (Before)
+<ui version="4.0" connectslotsbyname="false"> (After)
+```
+The performance gains from this will likely be negligible, but this can eliminate a lot of trial and error in situations of sporadic slot execution.
